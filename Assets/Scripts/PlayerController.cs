@@ -10,8 +10,8 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed = 0f;
-    public TextMeshProUGUI scoreText;
-	public GameObject winTextObject;
+    // public TextMeshProUGUI scoreText;
+	// public GameObject winTextObject;
     public int score;
     private Rigidbody rb;
     private float movementX;
@@ -19,13 +19,13 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         score = 0;
-        SetScoreText();
+        // SetScoreText();
         rb = GetComponent<Rigidbody>();
     }
 
-    void OnMove(InputValue movementValue)
+    public void Move(InputAction.CallbackContext context)
     {
-        Vector2 movementVector = movementValue.Get<Vector2>();
+        Vector2 movementVector = context.ReadValue<Vector2>();
         movementX = movementVector.x;
         movementZ = movementVector.y;
     }
@@ -48,11 +48,11 @@ public class PlayerController : MonoBehaviour
 
     void SetScoreText()
 	{
-		scoreText.text = "SCORE: " + score.ToString();
+		// scoreText.text = "SCORE: " + score.ToString();
 
 		if (score >= 250){
             // Set the text value of your 'winText'
-            winTextObject.SetActive(true);
+            // winTextObject.SetActive(true);
 		}
 	}
 }
